@@ -1,0 +1,55 @@
+/****** Style Star Rating Widget *****/
+#rating {
+    border: none;
+    float: left;
+}
+/*ẩn input radio - vì chúng ta đã có label là GUI*/
+#rating > input {
+    display: none;
+}
+
+/*1 ngôi sao*/
+#rating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: 'vncomic';
+    display: inline-block;
+    content: "\f005";
+}
+
+/*0.5 ngôi sao*/
+#rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+/*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+#rating > label {
+    color: #ddd;
+    float: right;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+/*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
+#rating > input:checked ~ label,
+#rating:not(:checked) > label:hover,
+#rating:not(:checked) > label:hover ~ label {
+    color: #ff8d29;
+}
+
+/* Hover vào các sao phía trước ngôi sao đã chọn*/
+#rating > input:checked + label:hover,
+#rating > input:checked ~ label:hover,
+#rating > label:hover ~ input:checked ~ label,
+#rating > input:checked ~ label:hover ~ label {
+    color: #ffb06e;
+}
+
+.rating > .col-sm-6 {
+    margin-left: -20px;
+}
+
+.title-rating {
+    color: #288ad6;
+}

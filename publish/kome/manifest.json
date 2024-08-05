@@ -1,0 +1,24 @@
+{
+  "short_name": "Toonihub",
+  "name": "Toonihub",
+  "icons": [
+    {
+      "src": "/mangareader/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/mangareader/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#5f25a6",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#5f25a6",
+  "description": "Best website to Read Manga online. We have the biggest library of over 200,000 manga available for Free download. Read Manga now!"
+}

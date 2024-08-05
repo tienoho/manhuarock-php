@@ -1,0 +1,7 @@
+{
+  "BucketName": "cdn.manhuarockz.com",
+  "Endpoint": "https://s3.ap-southeast-1.wasabisys.com",
+  "CDN": "https://cdn.manhuarockz.com",
+  "key": "TS22ALA5ZA30MPXZ5K7U",
+  "secret": "G4Q4FLWvE0MferdS9sRgISGFm5Os3tCAzDo5TvwE"
+}

@@ -1,0 +1,9 @@
+{
+  "save_poster": 1,
+  "save_poster_to_remote": "Local",
+  "only_update": 0,
+  "max_page_update": 1,
+  "server_image": "Wasabi",
+  "max_process_running": 10,
+  "using_multi_upload": 0
+}

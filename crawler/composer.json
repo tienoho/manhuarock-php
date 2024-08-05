@@ -1,0 +1,7 @@
+{
+    "require": {
+        "thingengineer/mysqli-database-class": "dev-master",
+        "aws/aws-sdk-php": "^3.296",
+        "bunnycdn/storage": "^2.0"
+    }
+}

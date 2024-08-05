@@ -1,0 +1,16 @@
+<?php return array (
+  'theme' => 'manga18fx',
+  'lang' => 'vi',
+  'site_url' => 'https://manhuarockz.com',
+  'tag_footer' => 'Truyện Tranh |Truyện Mới | Truyện 2024 | Manhuarockz.com',
+  'newupdate_home' => '24',
+  'general_page' => '36',
+  'total_related' => '6',
+  'total_pin' => 6,
+  'SBhistory' => '6',
+  'SBpopular' => '10',
+  'analytics_id' => 'G-ZL80T41HZ1',
+  'is_cache' => 'on',
+  'CacheTime' => 300,
+  'FBAppID' => '',
+);

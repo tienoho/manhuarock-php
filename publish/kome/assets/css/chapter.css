@@ -1,0 +1,150 @@
+.wrap_header {
+    text-align: center;
+    margin: 20px 0 0
+}
+
+.wrap_header h1 {
+    line-height: 1.3rem;
+    /* margin-bottom: 0; */
+    font-size: 32px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.wrap_header h1 a {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.wrap_header h2 a {
+    font-size: 16px;
+}
+
+.wrap_header h1 a:hover, .wrap_header h2 a:hover {
+    color: #a8d4f8;
+}
+
+.wrap_header p {
+    margin-bottom: 0;
+    font-size: 15px
+}
+
+.wrap_navi {
+    width: 800px;
+    margin: 15px auto
+}
+
+.wrap_navi .btnnavi {
+    display: block;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center
+}
+
+#lst_content > * {
+    margin: 0;
+}
+
+.w-full, #lst_content img {
+    height: auto;
+    max-width: 900px;
+    width: 100%;
+    background: url(/kome/assets/images/svg/load-image.svg?v=7) no-repeat 50% 50%;
+    background-size: 50px;
+    border-image: initial;
+    border-style: none;
+    border-width: medium;
+    display: block;
+    margin: 0 auto;
+}
+
+.chapter_select {
+    display: flex;
+}
+
+.chapter-select {
+    height: 48px;
+    border-radius: unset;
+    background-color: #2c2e38!important;
+    color: #fff!important;
+    border-color: #2e2e38!important;
+    border-radius: 5px;
+    box-shadow: none!important;
+}
+
+.select-chapter {
+    flex: 1
+}
+
+.changeChap {
+    max-height: 48px;
+    max-width: 48px;
+    background: #2c2e38!important;
+    text-align: center;
+    line-height: 48px;
+    font-size: 18px;
+    padding: 0 5px;
+    border: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.changeChap span {
+    padding: 15px;
+    color: #f0f9ff;
+}
+
+.disabled_button {
+    background: rgb(221, 221, 221);
+}
+
+
+.txtbaoloi {
+    padding: .625rem;
+    border: .0625rem solid #15161d;
+    border-radius: 5px;
+    line-height: 1.25rem;
+    background-color: #15161d;
+    display: block;
+    width: 100%;
+    color: #fff;
+}
+
+.baoloibutton {
+    background-color: #2196f3!important;
+    padding: 0 .625rem;
+    width: 15%;
+    line-height: 2.5rem;
+    color: #fff!important;
+    margin-left: 20px;
+    float: left;
+}
+
+.block-content {
+    max-width: 500px;
+    background-color: #ffffff;
+    margin: 5%;
+    padding: 15px;
+    border-radius: unset;
+    display: inline-block;
+}
+.block-text {
+    padding-bottom: 10px;
+    display: block;
+}
+
+.fed-part-case .breadcrumb {
+    margin-top: 10px;
+    background: unset;
+}
+
+#btntheodoi {
+    background: #2d2e38!important;
+    color: #ffff;
+    border-color: #2e2e38;
+}

@@ -1,0 +1,831 @@
+.profile-manga {
+    margin-bottom: 20px
+}
+
+.c-breadcrumb-wrapper {
+    padding-top: 16px
+}
+
+.c-breadcrumb .breadcrumb {
+    margin-bottom: 0;
+    background-color: transparent;
+    display: inline-block;
+    padding: 0
+}
+
+.c-breadcrumb .breadcrumb li {
+    display: inline-block;
+    font-size: 12px
+}
+
+.c-breadcrumb .breadcrumb li a {
+    color: #333;
+    font-weight: 700
+}
+
+.c-breadcrumb .breadcrumb li a:hover {
+    color: #191A19
+}
+
+.c-breadcrumb .breadcrumb li a.active {
+    color: #191A19
+}
+
+.c-breadcrumb .breadcrumb li + li:before {
+    content: "/";
+    padding: 0 2px
+}
+
+.profile-manga .post-title h1 {
+    margin-top: 14px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #191A19
+}
+
+.tab-summary {
+    padding: 15px 0 50px;
+    display: table;
+    width: 100%
+}
+
+.tab-summary .summary_image {
+    width: 225px;
+    padding: 15px;
+    background: #fff;
+    display: table-cell;
+    vertical-align: middle
+}
+
+.tab-summary .summary_image img {
+    max-width: 100%;
+    height: auto
+}
+
+.tab-summary .summary_content_wrap {
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 30px
+}
+
+.tab-summary .summary_content {
+    background-color: rgba(255, 255, 255, .5);
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    right: 0;
+    padding: 20px 30px 30px;
+    min-height: 318px;
+    display: flex
+}
+
+.tab-summary .post-content {
+    width: 70%;
+    float: left
+}
+
+.tab-summary .post-content .post-content_item {
+    width: 100%;
+    float: left;
+    margin-bottom: 3px
+}
+
+.tab-summary .post-content_item .summary-heading {
+    width: 106px;
+    float: left
+}
+
+.tab-summary .post-content_item .summary-heading h5 {
+    font-size: 14px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333
+}
+
+.tab-summary .post-content_item .summary-content {
+    width: calc(100% - 106px);
+    word-break: break-word;
+    float: left
+}
+
+.tab-summary .post-content_item .summary-content a + a:before {
+    content: "/";
+    padding: 0 2px
+}
+
+.tab-summary .post-status {
+    width: 30%;
+    margin-top: 56px;
+    float: left
+}
+
+.tab-summary .post-status .post-content_item {
+    width: 100%;
+    float: left
+}
+
+#init-links {
+    width: 100%;
+    float: left
+}
+
+#init-links a {
+    padding: 10px;
+    margin: 5px;
+    margin-bottom: 0;
+    color: #fff;
+    background: #191A19;
+    display: inline-block;
+    font-weight: 700;
+    border-radius: 5px
+}
+
+#init-links a:first-child {
+    margin-left: 0
+}
+
+h2.relation-mg {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #3367d6;
+    margin-top: 20px;
+    font-weight: 700
+}
+
+.panel-relation {
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+    background: #fff;
+    padding: 15px
+}
+
+.panel-relation h2 {
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 15px;
+    font-weight: 700;
+    padding-bottom: 5px;
+    margin-bottom: 10px
+}
+
+.panel-relation .manga-items {
+    width: calc(100% + 20px);
+    float: left;
+    margin-left: -10px
+}
+
+.panel-relation .manga-items .manga-item {
+    width: 20%;
+    float: left;
+    padding: 10px
+}
+
+.chapchange {
+    width: 100%;
+    float: left;
+    background: #fff;
+    padding: 10px
+}
+
+.chapchange h1 {
+    text-align: center;
+    font-size: 16px;
+    color: #191A19;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 25px
+}
+
+.chap-navigation {
+    width: 100%;
+    float: left;
+    text-align: center
+}
+
+.chap-navigation select {
+    width: 225px;
+    display: inline-block;
+    margin-right: 20px;
+    height: 30px;
+    outline: 0;
+    border-radius: 3px;
+}
+
+.chap-navigation .navi-change-chapter-btn {
+    display: inline-block;
+    line-height: 30px
+}
+
+.chap-navigation .navi-change-chapter-btn a {
+    background: #191A19;
+    color: #fff;
+    padding: 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.chap-navigation .navi-change-chapter-btn a:first-child {
+    margin-right: 20px;
+
+}
+
+.read-content {
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin: 20px 0
+}
+
+.read-content .page-break {
+    width: 100%;
+    float: left;
+    text-align: center
+}
+
+.read-content img {
+    height: auto;
+    width: 100%;
+    max-width: 720px
+}
+
+img.lazy {
+    background-image: url(../images/images-loading.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%
+}
+
+.chapter-sumary {
+    width: 100%;
+    float: left;
+    background: #fff;
+    padding: 15px 0;
+    margin-bottom: 20px
+}
+
+.chapter-sumary h2 {
+    font-size: 16px;
+    font-weight: 700
+}
+
+.chapter-sumary a {
+    color: #191A19;
+    font-weight: 700
+}
+
+.chapter-sumary a:hover {
+    text-decoration: underline
+}
+
+.chapter-sumary p {
+    margin-bottom: 0
+}
+
+.sidebar {
+    width: 325px;
+    float: left
+}
+
+.sidebar .sidebar-panel {
+    width: 100%;
+    float: left;
+    background: #f1f1f1;
+    margin-bottom: 15px
+}
+
+.sidebar-title {
+    width: 100%;
+    float: left
+}
+
+.popular-sidebartt {
+    border-top: 2px solid #191A19;
+    margin-bottom: 5px;
+}
+
+.popular-genrestt {
+    border-top: 2px solid #3367d6
+}
+
+.sidebar .sidebar-panel h2 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 7px 15px;
+    display: inline-block;
+    margin-bottom: 0;
+    border-bottom-right-radius: 6px;
+}
+
+.popular-sidebartt h2 {
+    background: #191A19
+}
+
+.popular-genrestt h2 {
+    background: #191A19
+}
+
+.sidebar .sidebar-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.sidebar .sidebar-panel ul li {
+    width: 50%;
+    float: left;
+    padding: 5px 0
+}
+
+.sidebar .sidebar-panel ul li a:hover {
+    color: #191A19
+}
+
+.sidebar-pp {
+    width: 100%;
+    float: left;
+    padding: 10px
+}
+
+.sidebar-pp .p-item {
+    display: table;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb
+}
+
+.sidebar-pp .p-item .ppbs {
+    display: table
+}
+
+.sidebar-pp .p-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0
+}
+
+.sidebar-pp .p-item .pthumb {
+    display: table-cell
+}
+
+.sidebar-pp .p-item img.it {
+    width: 85px
+}
+
+.sidebar-pp .p-item .p-left {
+    display: table-cell;
+    padding-left: 10px;
+    vertical-align: top
+}
+
+.sidebar-pp .p-item .p-left .list-chapter a {
+    color: #191A19;
+    background: #ebebeb
+}
+
+.sidebar-pp .p-item .p-left .list-chapter a:hover {
+    color: #fff;
+    background: #191A19
+}
+
+.sidebar-pp .p-item .p-left h4 {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-weight: 700;
+    color: #000
+}
+
+.sidebar-pp .p-item .p-left h4 a:hover {
+    color: #191A19
+}
+
+.pn-category-row {
+    float: left;
+    width: 100%;
+    margin-bottom: 0
+}
+
+.pn-category-row a.a-h {
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+    font-size: 15px;
+    line-height: 32px;
+    color: #383838
+}
+
+.pn-category-row a.a-h:hover {
+    color: #191A19
+}
+
+.pn-category-row a.a-h:last-child {
+    margin-right: 0
+}
+
+.pn-category-row a.a-h:before {
+    content: "\2022\0020"
+}
+
+.suggest-box {
+    margin-bottom: 0 !important;
+    margin-top: 15px !important
+}
+
+.algenres {
+    width: 100%;
+    float: left
+}
+
+.algenres ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.algenres ul li {
+    width: 14.2857%;
+    float: left;
+    padding: 5px 0;
+    display: inline-block
+}
+
+.algenres ul li a:hover {
+    color: #191A19
+}
+
+.algenres ul li.active a {
+    color: #191A19
+}
+
+.comment-box {
+    width: 100%;
+    float: left;
+    background: #fff;
+    margin: 30px 0
+}
+
+.story-rating {
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.story-rating span.avgrate {
+    line-height: 30px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    position: absolute;
+    margin-top: -2px;
+}
+
+.story-rating b {
+    float: left
+}
+
+.story-rating .my-rating {
+    float: left;
+    margin-top: -1px;
+    margin-left: -5px;
+}
+
+.is_rate {
+    display: block;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.rate-title {
+    display: none
+}
+
+.manga-panel-title {
+    width: 100%;
+    float: left;
+    border-bottom: 2px solid #f1f1f1;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 30px
+}
+
+.manga-panel-title i {
+    background: #191A19;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    position: relative;
+    margin-right: 16px;
+    margin-bottom: -2px;
+    vertical-align: middle;
+    display: inline-block
+}
+
+.manga-panel-title i:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.manga-panel-title i:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #191A19;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.panel-manga-chapter {
+    width: 100%;
+    float: left;
+    margin-top: 30px
+}
+
+.panel-manga-chapter ul {
+    width: 100%;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    max-height: 470px;
+    overflow: hidden
+}
+
+.panel-manga-chapter ul li {
+    width: 100%;
+    float: left;
+    padding: 15px 0;
+    border-bottom: 1px solid #ebebeb
+}
+
+.panel-manga-chapter ul li img {
+    float: right
+}
+
+.panel-manga-chapter ul li a {
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    float: left
+}
+
+.panel-manga-chapter ul li span {
+    float: right
+}
+
+.related-manga {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px
+}
+
+.related-items {
+    width: calc(100% + 20px);
+    float: left;
+    margin-left: -10px
+}
+
+.related-items .item {
+    width: 50%;
+    float: left;
+    padding: 0 10px;
+    margin-bottom: 15px
+}
+
+.related-items .item .rlbsx {
+    float: left;
+    display: table
+}
+
+.related-items .item img {
+    width: 80px;
+    height: 110px;
+    margin-right: 5px;
+    object-fit: cover
+}
+
+.related-items .item .bigor {
+    display: table-cell;
+    padding-left: 5px;
+    vertical-align: top
+}
+
+.related-items .item .bigor h5 {
+    margin: 0 0 15px;
+    font-size: 13px;
+    font-weight: 700
+}
+
+.related-items .item .bigor h5 a:hover {
+    color: #191A19
+}
+
+.manga-tags {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.manga-tags h5 {
+    color: #000;
+    font-size: 15px;
+    font-weight: 700
+}
+
+.manga-tags a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #888;
+    font-size: 13px
+}
+
+.manga-tags a:hover {
+    color: #191A19
+}
+
+.manga-tags a:after {
+    content: ",";
+    padding: 0 2px
+}
+
+.manga-tags a:last-child:after {
+    content: "";
+    padding: 0
+}
+
+@media (max-width: 1000px) {
+    .panel-relation .manga-items .manga-item {
+        width: 25%
+    }
+
+    .algenres ul li {
+        width: 16.6667%
+    }
+
+    .tab-summary .summary_image {
+        background: no-repeat;
+        width: 150px;
+        padding: 0;
+        vertical-align: top
+    }
+
+    .tab-summary .summary_content {
+        width: 100%;
+        float: left;
+        display: block
+    }
+
+    .tab-summary .post-content {
+        width: 100%
+    }
+
+    .tab-summary .post-status {
+        margin-top: 20px;
+        width: 100%
+    }
+
+    .sidebar {
+        width: 285px
+    }
+
+    .sidebar-pp .p-item .pthumb {
+        vertical-align: middle
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar-pp .p-item img.it {
+        width: 70px
+    }
+}
+
+@media (max-width: 800px) {
+    .algenres ul li {
+        width: 20%
+    }
+
+    .sidebar {
+        width: 100%
+    }
+
+    .sidebar-pp {
+        width: calc(100% + 20px);
+        float: left;
+        margin-left: -10px
+    }
+
+    .sidebar-pp .p-item {
+        width: 50%;
+        float: left;
+        padding: 0 10px;
+        padding-bottom: 10px;
+        display: unset
+    }
+
+    .sidebar-pp .p-item img.it {
+        width: 80px;
+        height: 120px;
+        object-fit: cover
+    }
+}
+
+@media (max-width: 768px) {
+    .tab-summary .summary_image {
+        padding: 15px;
+        background: #fff;
+        margin: 0 auto 20px;
+        width: auto;
+        display: inherit
+    }
+
+    .tab-summary .summary_content_wrap {
+        display: block;
+        padding-left: 0
+    }
+}
+
+@media (max-width: 700px) {
+    .chap-navigation select {
+        width: 50%;
+        float: left;
+        margin-right: 0;
+        margin-bottom: 15px;
+        margin-left: 25%
+    }
+}
+
+@media (max-width: 650px) {
+    .algenres ul li {
+        width: 25%
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar-pp .p-item {
+        width: 100%
+    }
+}
+
+@media (max-width: 500px) {
+    .algenres ul li {
+        width: 33.333%
+    }
+
+    .related-items .item {
+        width: 100%
+    }
+}
+
+@media (max-width: 450px) {
+    .algenres ul li {
+        width: 50%
+    }
+
+    .tab-summary .post-content_item .summary-heading {
+        width: 100%
+    }
+
+    .tab-summary .post-status .post-content_item .summary-heading {
+        width: 110px;
+    }
+    .tab-summary .post-status .post-content_item .summary-content {
+        width: calc(100% - 110px);
+    }
+    .tab-summary .post-content_item .summary-content {
+        width: 100%
+    }
+}
+
+@media (max-width: 400px) {
+    .chap-navigation .navi-change-chapter-btn a {
+        font-size: 13px
+    }
+}

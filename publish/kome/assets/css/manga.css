@@ -1,0 +1,177 @@
+.genner-block {
+    display: block;
+    border: 1px solid #8bd4fa;
+    color: #8bd4fa;
+    float: left;
+    border-radius: 3px;
+    margin: 10px 5px 0 0;
+    padding: 1px 10px;
+}
+
+.genner-block:hover {
+    color: #ffffff;
+    border-color: #fff;
+}
+
+.list01 {
+    overflow: hidden;
+    padding-bottom: 10px
+}
+
+.shortened {
+    max-height: 60px;
+    overflow: hidden
+}
+
+.detail-content {
+    padding-bottom: 5px;
+    color: #cbcbd2;
+}
+
+.detail-content p {
+    padding: 0;
+    margin: 0;
+    position: relative
+}
+
+.shortened:before {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    background: linear-gradient(rgba(255, 255, 255, 0), #15161d);
+}
+
+.total-bookmarks {
+    padding: 0 15px;
+    white-space: nowrap;
+}
+
+.wrap-detail-story {
+    margin-bottom: 20px;
+    color: #cbcbd2;
+}
+
+.wrap-detail-story .wrap-content-image {
+    margin: 0 25px 0 4px;
+    width: 225px;
+    float: left;
+    text-align: center
+}
+
+.wrap-detail-story .wrap-content-image img {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    max-height: 323px;
+}
+
+.wrap-detail-story .wrap-content-info {
+    width: 670px;
+    float: left
+}
+
+.wrap-detail-story .wrap-content-info .title {
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.wrap-detail-story .wrap-content-info .list-info .info-row > * {
+
+    font-size: 16px;
+}
+.wrap-detail-story .wrap-content-info .list-info .info-row {
+    padding-top: .3125rem;
+    line-height: 27px;
+}
+
+.wrap-detail-story .wrap-content-info .list-info .info-row .info-links {
+    margin-top: 5px;
+}
+
+.wrap-detail-story .wrap-content-info .list-info .info-row span {
+    display: inline-block;
+    color: #cbcbd2;
+}
+
+.wrap-detail-story .wrap-content-info .list-info .info-row b {
+    display: inline-block;
+}
+
+.wrap-detail-story .wrap-content-info .list-info .info-row b {
+    color: #ffffff;
+}
+.lst-chapter .chap-item {
+    position: relative;
+    border-bottom: 1.3px solid #1e2029;
+}
+
+
+.lst-chapter .chap-item a {
+    font-weight: 600;
+    padding: 15px 0;
+    display: inline-block;
+    color: #fff;
+}
+
+.lst-chapter .chap-item a:visited {color: #6d7080;}
+
+.lst-chapter .chap-item.less {
+    display: none;
+}
+
+.lst-chapter .chap-item .chapter-release-date {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #6d7080;
+}
+
+
+.view-more {
+    transition: color 200ms;
+    font-weight: 600;
+    color: #a1a2a5;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.view-more:after {
+    content: "\f280";
+    font-family: vncomic;
+}
+
+.view-more:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 75px;
+    top: -75px;
+    background: linear-gradient(rgba(255,255,255,0),#15161d);
+    width: 100%;
+}
+
+.ico-ion-md-swap {
+    font-size: 22px;
+    margin: 0 20px;
+}
+
+.part-list-chap, .lst-chapter {
+    margin-bottom: 20px;
+}
+
+.manga-breadcrumb ol {
+    background-color: unset;
+}

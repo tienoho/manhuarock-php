@@ -1,0 +1,15 @@
+<?php return array (
+  'manga' => 'truyen-tranh',
+  'chapter' => 'truyen',
+  'manga_list' => 'tat-ca-truyen',
+  'completed' => 'hoan-thanh',
+  'new-release' => 'moi-dang',
+  'latest-updated' => 'moi-cap-nhat',
+  'most-viewed' => 'xem-nhieu',
+  'search' => 'search',
+  'filter' => 'filter',
+  'genres' => 'the-loai',
+  'authors' => 'tac-gia',
+  'artists' => 'hoa-si',
+  'manga-type' => 'loai-truyen',
+);

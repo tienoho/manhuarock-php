@@ -1,0 +1,1 @@
+<?php /**PATH F:\PHP\HMT\resources\views/themes/kome/components/ajax/reading-list.blade.php ENDPATH**/ ?>
