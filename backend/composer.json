@@ -1,0 +1,46 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Services\\": "Services/",
+      "Controllers\\": "Controllers/",
+      "Middleware\\": "Middleware/",
+      "Models\\": "Models/",
+      "Config\\": "Config/",
+      "Command\\": "Command/",
+      "Crawler\\": "Crawler/"
+    }
+  },
+  "require": {
+    "php": ">=7.4|^8.0",
+    "ext-curl": "*",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ausi/slug-generator": "^1.1",
+    "aws/aws-sdk-php": "^3.199",
+    "gliterd/backblaze-b2": "^1.5",
+    "guzzlehttp/guzzle": "^7.4",
+    "illuminate/view": "^8.83",
+    "jenssegers/blade": "^1.4",
+    "nickdnk/graph-sdk": "^6.0",
+    "pecee/simple-router": "^4.3.7.2",
+    "php-curl-class/php-curl-class": "^9.3",
+    "phpfastcache/phpfastcache": "^8.0.7",
+    "phpmailer/phpmailer": "^6.6",
+    "samdark/sitemap": "^2.4",
+    "spatie/async": "^1.5",
+    "symfony/console": "^5.3",
+    "symfony/css-selector": "^5.3",
+    "symfony/dom-crawler": "^5.3",
+    "symfony/filesystem": "^5.3",
+    "symfony/lock": "^5.3",
+    "symfony/process": "^5.3",
+    "thingengineer/mysqli-database-class": "dev-master",
+    "voku/anti-xss": "^4.1",
+    "symfony/dotenv": "^6.0",
+    "google/apiclient": "^2.12",
+    "predis/predis": "^2.0",
+    "jimenezmaximiliano/php-tail-file": "^1.1"
+  },
+  "config": {}
+}

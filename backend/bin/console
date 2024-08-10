@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+
+<?php
+ini_set('memory_limit', '-1');
+ini_set('max_execution_time', 0);
+
+const ROOT_PATH = __DIR__ . '/../..';
+require_once ROOT_PATH . '/backend/vendor/autoload.php';
+
+use Services\Helper;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Dotenv\Dotenv;
+
+$dotenv = new Dotenv();
+$dotenv->load(ROOT_PATH . '/.env');
+
+Helper::load();
+$application = new Application();
+
+foreach (glob(ROOT_PATH . "/backend/Command/*.php") as $filename) {
+    $base_name = str_replace('.php', '', basename($filename));
+    $command = "Command\\$base_name";
+    $application->add(new $command);
+}
+
+$application->run();
