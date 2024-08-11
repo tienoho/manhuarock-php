@@ -58,8 +58,6 @@ class Chapter extends Model
         return Chapter::getDB()->objectBuilder()->getOne('chapters c');
     }
 
-
-
     public static function AddMultiChapters(array $chapters)
     {
     }

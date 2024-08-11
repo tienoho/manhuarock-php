@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Models\Chapter as ChapterModel;
 use Models\Manga as MangaModel;
+use Models\History as HistoryModel;
 use Models\Model;
 use Services\Blade;
 
@@ -35,22 +36,25 @@ class Manga
 
         $chapters = ChapterModel::ChapterListByID($manga->id);
 
+        if (is_login()) {
+            $history = new HistoryModel();
+            $readingHistory = $history->getReadingHistory(userget()->id);
+        }
+
         return (new Blade)->render('themes.' . app_theme() . '.pages.manga', ["manga" => $manga, "chapters" => $chapters]);
     }
 
     public function showChapter($m_slug, $c_slug = null, $c_id = null)
     {
         $render_data = [];
-
         $manga = MangaModel::MangaBySlug($m_slug);
-
-        $render_data['manga'] = $manga;
+        $render_data['user_id'] = '';
+        $render_data['manga']   = $manga;
         $render_data['chapter'] = [
             'id' => '',
             'name' => '',
             'slug' => '',
         ];
-
         if ($c_slug) {
             $chapter = ChapterModel::ChapterBySlug($manga->id, $c_slug);
             if (empty($manga)) {
@@ -77,7 +81,12 @@ class Manga
 
                 $render_data['chapter_data'] = $chapter_data;
             }
+        }
 
+        if (is_login()) {
+            $render_data['user_id'] = userget()->id;
+            $history = new HistoryModel();
+            $history->recordReading(userget()->id, $manga->id, $chapter->id);
         }
 
         $blable = new Blade;
@@ -110,10 +119,6 @@ class Manga
                 'msg' => 'Chap này không tồn tại hoặc đã bị xoá',
             ]);
         }
-
-        // response()->json([
-        //     'chapter_data' => $chapter_data,
-        // ]);
 
         switch ($chapter_data->type) {
             case 'leech':

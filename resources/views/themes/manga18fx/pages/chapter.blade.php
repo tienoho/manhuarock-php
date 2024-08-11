@@ -1,19 +1,18 @@
 @extends('themes.manga18fx.layouts.full')
 <?php
 include(ROOT_PATH . '/resources/views/includes/chapter.php');
-
 $chapters = \Models\Chapter::ChapterListByID($manga->id);
-?>
 
+if (is_login()) {
+    $recordId = \Models\History::recordReading($user_id,$manga->id,$chapter->id);
+}
+?>
 @section('title', $metaConf['chapter_title'])
 @section('description', $metaConf['chapter_description'])
-
 @section('url', $chapter_url)
 @section('image', $manga->cover)
-
 @include('ads.banner-ngang')
 @include('ads.banner-sidebar')
-
 @section('content')
     <script>
         var manga_id = {{ $manga->id }}, chapter_id = {{ $chapter->id }}, chapter_name = '{{ $chapter->name }}'
