@@ -36,11 +36,6 @@ class Manga
 
         $chapters = ChapterModel::ChapterListByID($manga->id);
 
-        if (is_login()) {
-            $history = new HistoryModel();
-            $readingHistory = $history->getReadingHistory(userget()->id);
-        }
-
         return (new Blade)->render('themes.' . app_theme() . '.pages.manga', ["manga" => $manga, "chapters" => $chapters]);
     }
 
@@ -49,12 +44,13 @@ class Manga
         $render_data = [];
         $manga = MangaModel::MangaBySlug($m_slug);
         $render_data['user_id'] = '';
-        $render_data['manga']   = $manga;
+        $render_data['manga'] = $manga;
         $render_data['chapter'] = [
             'id' => '',
             'name' => '',
             'slug' => '',
         ];
+
         if ($c_slug) {
             $chapter = ChapterModel::ChapterBySlug($manga->id, $c_slug);
             if (empty($manga)) {
@@ -81,12 +77,16 @@ class Manga
 
                 $render_data['chapter_data'] = $chapter_data;
             }
+
         }
 
         if (is_login()) {
             $render_data['user_id'] = userget()->id;
-            $history = new HistoryModel();
-            $history->recordReading(userget()->id, $manga->id, $chapter->id);
+
+           //$historyModel = new HistoryModel();
+
+            //$history = new HistoryModel();
+            //$history->recordReading(userget()->id, $manga->id, $chapter->id);
         }
 
         $blable = new Blade;
@@ -119,6 +119,10 @@ class Manga
                 'msg' => 'Chap này không tồn tại hoặc đã bị xoá',
             ]);
         }
+
+        // response()->json([
+        //     'chapter_data' => $chapter_data,
+        // ]);
 
         switch ($chapter_data->type) {
             case 'leech':
@@ -449,6 +453,16 @@ class Manga
                 'mangas' => $mangas,
                 'keyword' => $keyword,
             ]),
+        ]);
+    }
+
+    function unlockChapterTemplate($chapter_id){
+        Model::getDB()->where('id', $chapter_id);
+        $chap = Model::getDB()->objectBuilder()->getOne("chapters");
+
+        return (new Blade())->render('themes.' . app_theme() . '.template.unlock-chapter-template', [
+            'chap' => $chap,
+            'chapter_id' => $chapter_id,
         ]);
     }
 }

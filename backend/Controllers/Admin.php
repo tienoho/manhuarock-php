@@ -208,6 +208,7 @@ class Admin
         $chapter['slug'] = slugGenerator($chapter['name']);
         $chapter['chapter_index'] = input()->value('chapter_index');
         $chapter['hidden'] = input()->value('hidden');
+        $chapter['is_lock'] = input()->value('is_lock');
 
         try {
             Model::getDB()->where('id', $c_id)->update('chapters', $chapter);
@@ -769,6 +770,35 @@ class Admin
             'slugs' => $slugs,
         ]);
 
+    }
+
+    function lockChapterTemplate($chapter_id){
+        MangaModel::getDB()->where('id', $chapter_id);
+        $chap = MangaModel::getDB()->objectBuilder()->getOne("chapters");
+
+        return (new Blade())->render('admin.template.lock-chapter-template', [
+            'chap' => $chap,
+            'chapter_id' => $chapter_id,
+        ]);
+    }
+
+    public function lockChapter($chapter_id)
+    {
+        $input_is_lock = input()->value('is_lock');
+        $price = input()->value('price');    
+        $is_lock = false;    
+        if($input_is_lock=='on')  {
+            $is_lock = true;    
+        } else{
+            $price=0;
+        }
+        Model::getDB()->where('id', $chapter_id);
+        Model::getDB()->update('chapters', [
+            'price' => $price,
+            'is_lock' => $is_lock,
+        ]);
+
+        response()->json(['message' => "Đã cập nhật thành công",'price'=>$price]);
     }
 
 }

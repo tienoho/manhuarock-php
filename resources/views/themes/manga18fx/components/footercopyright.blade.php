@@ -23,8 +23,9 @@
                                 @endforeach
                             </div>
 
-
+                            
                             <p>Copyright © 20{{ date('y') }} {{ getConf('meta')['site_name'] }} - All rights reserved.</p>
+                            
 
                         </div>
                     </div>

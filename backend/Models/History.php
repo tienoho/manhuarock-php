@@ -2,18 +2,34 @@
 
 namespace Models;
 
-class History  extends Model
+class History
 {
     protected $redis;
+    protected $db;
     protected $redisKeyPrefix = 'user:';
     protected $redisTTL = 86400; // 1 ngày (TTL trong Redis)
 
-    public function __construct($host = '127.0.0.1', $port = 6379)
+    public function __construct($redisConfig = [])
     {
-         // Config
-         $this->config = include ROOT_PATH . '/config/tools-v2/config.php';
-         // Redis cache
-         $this->redis = $this->config['redis'];
+        $redisConfig = [
+            'scheme' => 'tcp',
+            'host' => '127.0.0.1',
+            'port' => 6379
+        ];
+        // Kết nối Redis bằng Predis
+       // $this->redis = new PredisClient($redisConfig);
+
+        $this->redis = new Predis\Client('tcp://127.0.0.1:6379');
+
+        // // Kết nối MySQL thông qua MysqliDb
+        // $this->db = new MysqliDb([
+        //     'host' => $dbConfig['host'],
+        //     'username' => $dbConfig['username'],
+        //     'password' => $dbConfig['password'],
+        //     'db' => $dbConfig['dbname'],
+        //     'port' => $dbConfig['port'] ?? 3306,
+        //     'charset' => 'utf8'
+        // ]);
     }
 
     /**
@@ -89,36 +105,36 @@ class History  extends Model
         return $this->redisKeyPrefix . $userId . ':manga_history';
     }
 
-    /**
-     * Batch Insert dữ liệu từ Redis vào MySQL
-     */
-    public function syncToMySQL($userId)
-    {
-        $redisKey = $this->getRedisKey($userId);
-        $history = $this->redis->zRange($redisKey, 0, -1);
-        if (empty($history)) {
-            return 0;
-        }
+    // /**
+    //  * Batch Insert dữ liệu từ Redis vào MySQL
+    //  */
+    // public function syncToMySQL($userId)
+    // {
+    //     $redisKey = $this->getRedisKey($userId);
+    //     $history = $this->redis->zRange($redisKey, 0, -1);
+    //     if (empty($history)) {
+    //         return 0;
+    //     }
 
-        $batchData = [];
-        foreach ($history as $entry) {
-            $data = json_decode($entry, true);
-            $batchData[] = [
-                'user_id' => $userId,
-                'manga_id' => $data['manga_id'],
-                'chapter_id' => $data['chapter_id'],
-                'read_time' => date('Y-m-d H:i:s', $data['timestamp'])
-            ];
-        }
+    //     $batchData = [];
+    //     foreach ($history as $entry) {
+    //         $data = json_decode($entry, true);
+    //         $batchData[] = [
+    //             'user_id' => $userId,
+    //             'story_id' => $data['story_id'],
+    //             'chapter_id' => $data['chapter_id'],
+    //             'read_time' => date('Y-m-d H:i:s', $data['timestamp'])
+    //         ];
+    //     }
 
-        // Sử dụng MysqliDb để batch insert
-        $inserted =  History::getDB()->insertMulti('manga_history', $batchData);
+    //     // Sử dụng MysqliDb để batch insert
+    //     $inserted =  History::getDB()->insertMulti('manga_history', $batchData);
 
-        if ($inserted) {
-            // Xóa dữ liệu đã đồng bộ từ Redis
-            $this->redis->del($redisKey);
-        }
+    //     if ($inserted) {
+    //         // Xóa dữ liệu đã đồng bộ từ Redis
+    //         $this->redis->del($redisKey);
+    //     }
 
-        return $inserted;
-    }
+    //     return $inserted;
+    // }
 }

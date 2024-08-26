@@ -57,6 +57,11 @@ Router::group(['prefix' => '/api'], function () {
             Router::get('/edit-taxonomy-template/{id}', 'Taxonomy@editTaxonomyTemplate');
 
             Router::post('/comment/delete/{id}', "Comment@delete");
+
+            // Lock chapter
+            Router::get('/lock-chapter-template/{id}', 'Admin@lockChapterTemplate');
+            Router::post('/lock-chapter/{id}', 'Admin@lockChapter');
+
         });
     });
 
@@ -77,6 +82,9 @@ Router::group(['prefix' => '/api'], function () {
 
         response()->json($data);
     });
+
+    Router::get('/unlock-chapter-template/{id}', 'Manga@unlockChapterTemplate');
+    Router::post('/unlock-chapter', 'User@unlockChapter');
 });
 
 Router::group(['prefix' => '/ajax'], function () {

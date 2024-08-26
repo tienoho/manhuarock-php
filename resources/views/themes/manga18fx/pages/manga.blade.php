@@ -78,11 +78,23 @@ $manga->rating_score = floor(($manga->rating_score / 2) * 2) / 2;
                         <h2 class="manga-panel-title "><i class="icofont-flash"></i> {{ L::_("Latest Chapter Releases") }}</h2>
                         <ul class="row-content-chapter ">
                             @foreach($chapters as $chapter)
-                                <li class="a-h ">
-                                    <a class="chapter-name text-nowrap" data-chapter-id="{{ $chapter->id }}"
+                                <li class="a-h col-sm-12 row">
+                                    <a class="chapter-name text-nowrap col-sm-6" data-chapter-id="{{ $chapter->id }}"
                                        href="{{ url('chapter', ['m_slug' => $manga->slug, 'c_id' => $chapter->id, 'c_slug' => $chapter->slug]) }}"
-                                       title="{{ $manga->name }} {{ $chapter->name }}">{{ $chapter->name }}</a>
-                                    <span class="chapter-time text-nowrap">{{ time_convert($chapter->last_update) }}</span>
+                                       title="{{ $manga->name }} {{ $chapter->name }}">{{ $chapter->name }}</a>                                    
+                                    <span class="chapter-time text-nowrap col-sm-3">{{ time_convert($chapter->last_update) }}</span>
+                                    <span class="view col-sm-2" style="color: #fff;"><i class="icofont-eye-open"></i> {{ $chapter->views }}</span>
+                                    @if ($chapter->is_lock)
+                                        @if (isset($chapter->is_unlocked) && $chapter->is_unlocked)
+                                            <span class="view col-sm-1" style="color: #fff;">                                        
+                                                <a id="unlock-chapter-{{$chapter->id}}" data-chapter-id="{{ $chapter->id }}" title="{{ $manga->name }} {{ $chapter->name }}"><i class="icofont-ui-unlock"></i></a>
+                                            </span>
+                                        @else
+                                            <span class="view col-sm-1" style="color: #fff;">                                        
+                                                <a id="unlock-chapter-{{$chapter->id}}" data-chapter-id="{{ $chapter->id }}" title="{{ $manga->name }} {{ $chapter->name }}" onclick="modalUnlockChapter('{{ $chapter->id }}','{{ $chapter->id }}')"><i class="icofont-ui-lock"></i></a>
+                                            </span>
+                                        @endif                                        
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>
@@ -162,7 +174,7 @@ $manga->rating_score = floor(($manga->rating_score / 2) * 2) / 2;
     </div>
 
 @stop
-
+<div id="modal-pos"></div>
 @section('js-body')
     <style>
         .panel-manga-chapter ul li a.isread, .panel-manga-chapter ul li a:visited {
@@ -231,6 +243,66 @@ $manga->rating_score = floor(($manga->rating_score / 2) * 2) / 2;
                 });
             }
         });
+
+        function modalUnlockChapter(mangaId,chapterId){        
+            
+            if(!isLoggedIn) {
+                $(document).Toasts('create', {
+                                   title: 'Thông báo',
+                                   class: 'bg-danger',
+                                   autohide: true,
+                                   delay: 1000,
+                                   body: 'Bạn chưa đăng nhập'
+                               })
+                return;
+            }
+
+               $.get('/api/unlock-chapter-template/' + chapterId, function (data) {
+
+                   OpenAjaxModal(data);
+                   
+                   $('#frmUnlockChapter').on('submit', function(e) {
+                       
+                        e.preventDefault(); // Ngăn chặn hành vi submit mặc định
+
+                       // Lấy URL từ thuộc tính action của form
+                       var formAction = $(this).attr('action');
+                       // Lấy dữ liệu từ form
+                       var formData = $(this).serialize(); // Serialize các giá trị của form
+                       // Gửi dữ liệu qua AJAX
+                       $.ajax({
+                           url: formAction, // Sử dụng URL từ action của form
+                           type: 'POST', // Phương thức gửi
+                           data: formData, // Dữ liệu cần gửi
+                           success: function(response) {
+                               // Xử lý phản hồi từ server
+                               if(response.status!=='ok'){
+                                    toastr.warning(response.msg);
+                               }else{
+                                    toastr.success(response.msg); 
+                                    let idUnlockChapter='unlock-chapter-'+chapterId;    
+                                    $(`#${idUnlockChapter}`).html('<i class="icofont-ui-unlock"></i>');
+                                    $(`#${idUnlockChapter}`).removeAttr('onclick');
+                               }     
+                               $('#ajax-modal').modal('hide');
+                           },
+                           error: function(xhr, status, error) {
+                               // Xử lý nếu có lỗi xảy ra
+                               console.log("ERROR : ", error);
+                               toastr.warning(error);
+                           }
+                       });
+                   });
+               });
+           }
+
+           function OpenAjaxModal(html){
+                let modalPos = $('#modal-pos');
+                modalPos.empty();
+                modalPos.html(html)
+                $("#ajax-modal").modal('show');
+            }
+
 
     </script>
 @stop

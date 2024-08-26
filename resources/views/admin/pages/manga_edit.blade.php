@@ -5,7 +5,7 @@
           integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="/admin/css/dataTables.bootstrap4.min.css"/>
-
+    
     <style>
         .cover-preview {
             text-align: -webkit-center;
@@ -13,7 +13,7 @@
 
         .cover-preview img {
             height: 250px;
-            width: 100%;
+            /* width: 100%; */
             object-fit: cover;
         }
     </style>
@@ -234,12 +234,14 @@
                                                     <td>{{ $chapter->hidden  == 0 ? "Công khai" : "Nháp" }}</td>
                                                     <td>{{ timeago($chapter->last_update) }}</td>
                                                     <td class="text-right py-0 align-middle">
-                                                        <div class="btn-group btn-group-sm">
-                                                            <a href="{{ url('admin.chapter-edit', ['c_id' => $chapter->id]) }}"
-                                                               class="btn btn-info"><i class="fas fa-edit"></i> Sửa</a>
-                                                            <a href="{{ url('api.delete-chapter', ['c_id' => $chapter->id]) }}"
-                                                               class="btn btn-danger"><i class="fas fa-trash"></i>
-                                                                Xoá</a>
+                                                        <div class="btn-group btn-group-sm">                                                   
+                                                            <button class="btn btn-warning" onclick="modalLockChapter('{{ $chapter->manga_id }}','{{ $chapter->id }}')"><i class="fas fa-lock"></i> Khóa
+                                                            @if ($chapter->is_lock)
+                                                                <span id="badge-price-{{ $chapter->id }}" class="badge badge-light">{{ $chapter->price }}</span>
+                                                            @endif                                                            
+                                                            </button>
+                                                            <a href="{{ url('admin.chapter-edit', ['c_id' => $chapter->id]) }}" class="btn btn-info"><i class="fas fa-edit"></i> Sửa</a>
+                                                            <a href="{{ url('api.delete-chapter', ['c_id' => $chapter->id]) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Xoá</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -274,6 +276,8 @@
     <script src="/admin/js/dataTables.bootstrap4.min.js"></script>
     <script src="/admin/js/dataTables.responsive.min.js"></script>
     <script src="/admin/js/responsive.bootstrap4.min.js"></script>
+
+    
 
     <script type="text/javascript">
         if (location.hash) {
@@ -325,7 +329,6 @@
             $("#cover-preview").on('click', function (e) {
                 $("#btn-upload-cover").click();
             });
-
 
             $(".btnSubmit").click(function (event) {
                 //stop submit the form, we will post it manually.
@@ -412,11 +415,9 @@
             tokenSeparators: [','],
             createTag: function (params) {
                 let term = $.trim(params.term);
-
                 if (term === '') {
                     return null;
                 }
-
                 return {
                     id: term,
                     text: term,
@@ -425,6 +426,57 @@
             }
         });
 
+        function modalLockChapter(mangaId,chapterId){
+            $.get('/api/lock-chapter-template/' + chapterId, function (data) {
+                OpenAjaxModal(data);
+                
+                $('#frmLockChapter').on('submit', function(e) {
+                    e.preventDefault(); // Ngăn chặn hành vi submit mặc định
+                    // Lấy URL từ thuộc tính action của form
+                    var formAction = $(this).attr('action');
+                    // Lấy dữ liệu từ form
+                    var formData = $(this).serialize(); // Serialize các giá trị của form
+                    // Gửi dữ liệu qua AJAX
+                    $.ajax({
+                        url: formAction, // Sử dụng URL từ action của form
+                        type: 'POST', // Phương thức gửi
+                        data: formData, // Dữ liệu cần gửi
+                        success: function(response) {
+                            // Xử lý phản hồi từ server (có thể hiển thị thông báo thành công)
+                            
+                            $(document).Toasts('create', {
+                                class: 'bg-success m-1',
+                                title: 'Thông báo',
+                                autohide: true,
+                                delay: 1000,
+                                body: response.message
+                            });
 
+                            let idspane='badge-price-'+chapterId;
+
+                            $(`#${idspane}`).text(response.message);                            
+
+                            $('#ajax-modal').modal('hide');     
+    
+
+                        },
+                        error: function(xhr, status, error) {
+                            // Xử lý nếu có lỗi xảy ra
+                            console.log("ERROR : ", error);
+                            $(document).Toasts('create', {
+                                title: 'Có lỗi',
+                                class: 'bg-danger',
+                                autohide: true,
+                                delay: 1000,
+                                body: error
+                            })
+                        }
+                    });
+                });
+
+            });
+        }
+
+        
     </script>
 @stop

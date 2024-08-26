@@ -1,4 +1,10 @@
 @if(!$hidden_form)
+<style>
+        .selected {
+            color: green; /* Change this to your desired selected color */
+            font-size: 24px; /* Optional: adjust size */
+        }
+</style>
     <div class="comment-input">
         <div class="user-avatar">
             @if(!is_login())
@@ -32,7 +38,7 @@
                 <div class="ci-buttons" id="df-cm-buttons" style="display: none;">
                     <div class="ci-b-left">
                         <div class="cb-li">
-                            <a class="btn btn-sm btn-spoil"><i class="icofont-check mr-2"></i>{{ L::_("Spoil?") }}</a>
+                            <a class="btn btn-sm btn-spoil"><i class="icofont-check mr-2 selected"></i>{{ L::_("Ẩn") }}</a>
                         </div>
                     </div>
                     <div class="ci-b-right">
@@ -51,9 +57,12 @@
     @foreach($comments as $comment)
         <div class="cw_l-line" id="cm-{{ $comment->id }}">
             <div class="user-avatar">
-                <img class="user-avatar-img"
-                     src="{{ $comment->useravata }}"
-                     alt="{{ $comment->username }}"/></div>
+                @if(!is_login())
+                    <img class="user-avatar-img" src="/mangareader/images/no-avatar.jpg"/>
+                @else
+                    <img class="user-avatar-img" src="{{ userget()->avatar_url }}"/>
+                @endif
+            </div>
             <div class="info">
                 <div class="ihead">
                     <div class="user-name">{{ $comment->username }}</div>
@@ -63,7 +72,7 @@
                     <p>{{ $comment->content }}</p>
                     @if($comment->is_spoil)
                         <div class="show-spoil my-3">
-                            <button type="button" class="btn btn-sm btn-light">{{ L::_('Show spoil') }}</button>
+                            <button type="button" class="btn btn-sm btn-light">{{ L::_('Hiển thị phần mờ') }}</button>
                         </div>
                     @endif
                 </div>
@@ -105,7 +114,7 @@
                                     <div class="ci-buttons">
                                         <div class="ci-b-left">
                                             <div class="cb-li"><a class="btn btn-sm btn-spoil"><i
-                                                            class="icofont-check mr-2"></i>{{ L::_("Spoil?") }}</a>
+                                                            class="icofont-check mr-2 selected"></i>{{ L::_("Ẩn") }}</a>
                                             </div>
                                         </div>
                                         <div class="ci-b-right">
@@ -156,7 +165,7 @@
                                         @if($reply->is_spoil)
                                             <div class="show-spoil my-3">
                                                 <button type="button"
-                                                        class="btn btn-sm btn-light">{{ L::_('Show spoil') }}</button>
+                                                        class="btn btn-sm btn-light">{{ L::_('Hiển thị phần mờ') }}</button>
                                             </div>
                                         @endif
                                     </div>
@@ -180,8 +189,7 @@
                                     <div id="reply-{{ $reply->id }}" class="comment-input is-reply reply-block"
                                          style="display: none;">
                                         <div class="user-avatar">
-                                            <img class="user-avatar-img" src="{{ userget()->avatar_url }}"
-                                                 alt="{{ userget()->name }}">
+                                            <img class="user-avatar-img" src="{{ userget()->avatar_url }}" alt="{{ userget()->name }}">
                                         </div>
                                         <div class="ci-form">
                                             <form class="preform preform-dark comment-form">
@@ -199,8 +207,8 @@
                                                           required=""></textarea>
                                                 <div class="ci-buttons">
                                                     <div class="ci-b-left">
-                                                        <div class="cb-li"><a class="btn btn-sm btn-spoil"><i
-                                                                        class="icofont-check mr-2"></i>{{ L::_("Spoil?") }}</a>
+                                                        <div class="cb-li"><a class="btn btn-sm btn-spoil "><i
+                                                                        class="icofont-check mr-2 selected"></i>{{ L::_("Ẩn") }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="ci-b-right">

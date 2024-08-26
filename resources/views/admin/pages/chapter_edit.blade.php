@@ -52,9 +52,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('admin.manga-edit', ['m_id' => $manga->id]) }}">{{
-                                $manga->name }}</a>
-                        </li>
+                        <li class="breadcrumb-item"><a href="{{ url('admin.manga-edit', ['m_id' => $manga->id]) }}">{{ $manga->name }}</a></li>
                         <li class="breadcrumb-item active">{{ $chapter->name }}</li>
                     </ol>
                 </div>
@@ -67,8 +65,7 @@
             <div class="card-header">
                 <h3 class="card-title">
                     <i class="fas fa-edit"></i>
-                    <a href="{{ url('admin.manga-edit', ['m_id' => $manga->id]) }}">{{ $manga->name }} {{ $chapter->name
-                        }}</a>
+                    <a href="{{ url('admin.manga-edit', ['m_id' => $manga->id]) }}">{{ $manga->name }} {{ $chapter->name }}</a>
                 </h3>
             </div>
             <div class="card-body">
@@ -94,10 +91,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="price"><i class="fas fa-dollar-sign mr-1 text-danger"></i>Giá</label>
-                            <small>(mặc định 0)</small>
-                            <input name="price" type="number" class="form-control" id="price" placeholder="VD: 10000"
-                                value="{{ $chapter->price }}">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" name="is_lock" id="is_lock" {{ $chapter->is_lock?'checked':'' }}>
+                                <label class="custom-control-label" for="is_lock">Khóa chap</label>
+                            </div>
+                            <div class="f-price" style="display: {{ $chapter->is_lock?'block':'none' }}">
+                                <label for="price"><i class="fas fa-dollar-sign mr-1 text-danger"></i>Giá</label>
+                                <small>(mặc định 0)</small>
+                                <input name="price" type="number" class="form-control" id="price" placeholder="VD: 10000" value="{{ $chapter->price }}">
+                            </div>                            
                         </div>
 
                         <div class="form-group">
@@ -105,7 +107,6 @@
                                 <input {{ $chapter_content->type === 'image' ? 'checked' : '' }} type="checkbox"
                                 class="custom-control-input" name="IsImageChap" id="IsImageChap">
                                 <label class="custom-control-label" for="IsImageChap">Chương Ảnh</label>
-
                             </div>
 
                             <div class="ml-3 custom-control custom-switch d-inline-block">
@@ -130,7 +131,6 @@
                                         <span class="sr-only">Loading...</span>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="row image-preview" id="upload-preview">
@@ -143,13 +143,11 @@
                                 @endforeach
                                 @endif
                             </div>
-
                         </div>
 
                         <div class="form-group" id="form-content">
                             <input hidden="hidden" value="{{ $chapter_content->id }}" id="content-id">
                             <label for="name">Nội dung <span class="text-danger">*</span></label>
-
                             <textarea id="content" name="content">
                                     @if(is_array($chapter_content->content))
                                     {{ implode("\n", $chapter_content->content) }}
@@ -167,8 +165,7 @@
                             </div>
                         </div>
 
-                        <input type="submit" value="Cập Nhật" name="single-chap" 
-                            class="btn btnSubmit btn-success float-right">
+                        <input type="submit" value="Cập Nhật" name="single-chap" class="btn btnSubmit btn-success float-right">
 
                     </div>
 
@@ -220,8 +217,7 @@
             }
 
             var uploadSuccess = function(data) {
-                var Img = `<div class="preview-contain col-lg-2 col-md-4 col-6" style="position:relative;">
-<span class="remove-preview"><i class="fas fa-trash-alt"></i></span><img src="{URL}"/></div>`
+                var Img = `<div class="preview-contain col-lg-2 col-md-4 col-6" style="position:relative;"><span class="remove-preview"><i class="fas fa-trash-alt"></i></span><img src="{URL}"/></div>`
 
                 Img = Img.replace('{URL}', data.url)
 
@@ -265,16 +261,12 @@
 
         var loadChapType = function() {
             var $form_upload = $('#form-upload-image');
-
             if (!$('#IsImageChap').is(':checked')) {
                 return $form_upload.hide();
             }
-
             loadContent();
-
             $("#upload-preview").sortable({
                 opacity: 0.8,
-                // revert: true,
                 forceHelperSize: true
                 , forcePlaceholderSize: true
                 , placeholder: 'draggable-placeholder'
@@ -283,20 +275,15 @@
                     loadContent()
                 }
             , });
-
             $form_upload.show()
-
             $("#isUploading").hide()
-
             $('#inputImage').on('change', function() {
                 imagesPreview(this, '#upload-preview');
             });
-
             $(document).on('click', '.remove-preview', function() {
                 $(this).parents('.preview-contain').remove();
                 loadContent();
             });
-
         }
 
         var loadContent = function() {
@@ -318,8 +305,16 @@
             loadChapType();
         });
 
-
         loadChapType();
+
+        $('#add-chap #is_lock').on('change', function() {
+            if ($(this).is(':checked')) {
+                $('.f-price').show();
+            } else {
+                $('.f-price').hide();
+            }
+        });
+        
     });
 
     $(function() {
@@ -329,9 +324,6 @@
             if($(".btnSubmit").prop("disabled") == true) return alert("Đang tải ảnh lên, vui lòng chờ trong giây lát!");
 
             $(".btnSubmit").prop("disabled", true).addClass("disabled");
-
-            
-
 
             var content = $('#content').summernote('code');
             if ($('#IsImageChap').is(':checked')) {
@@ -364,6 +356,18 @@
                 alert("Không có nội dung");
                 return;
             }
+            var price = $('#price').val() || 0;
+            var is_lock = 0;
+            if ($("#is_lock").is(':checked')) {
+                is_lock = 1;
+            }else{
+                price=0;
+            }
+
+            if(is_lock==1 && price <=0){
+                alert("Giá phải lớn hơn 0");
+                return;
+            }
 
             var content_id = $('#content-id').val();
             
@@ -374,7 +378,8 @@
                 content: content, 
                 hidden: hidden,
                 content_id: content_id,
-                price: $('#price').val() || 0
+                is_lock: is_lock,
+                price: price
             }
 
             sendData(data);

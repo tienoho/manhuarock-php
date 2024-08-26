@@ -130,6 +130,9 @@ class lang {
         'Error Report' => 'Báo lỗi',
         'Please enter your error' => 'Nhập lỗi bạn gặp phải',
         'An error has been reported, we will fix it quickly' => 'Báo cáo của bạn đã được lưu lại, chúng tôi sẽ sớm xử lý',
-        'All Manga' => 'Danh Sách Truyện'
+        'All Manga' => 'Danh Sách Truyện',
+        'AddCoin' => 'Nạp Coin',
+        'Coin' => 'Coin',
+        'Total Coins' => 'Tổng số coin',
     );
 }

@@ -36,6 +36,7 @@ $metaConf = getConf('meta');
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <link href="/manga18fx/css/icofont-icofont.min.css" rel='stylesheet' type='text/css'/>
     <link href="/manga18fx/css/css-star-rating-svg.css" rel='stylesheet' type='text/css'/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <script>
         let isLoggedIn = {{ is_login() ? "true" : "false" }},
             slugConf = {
@@ -108,7 +109,8 @@ $metaConf = getConf('meta');
     document.head.append(script);
     })();
 </script>
-
+     <!--<script data-cfasync="false" async type="text/javascript" src="//noveladulses.com/nmozecrX5o6GnPLZ/91228"></script>
+    <script data-cfasync="false" async type="text/javascript" src="//smackedtapnet.com/g0J7IEr27RhqIElE/91227"></script> -->
 </head>
 
 <body ng-app="myApp" class="bodymode">
@@ -126,8 +128,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script type="text/javascript" src="/manhwa18cc/js/1.5.6-angular.min.js" defer></script>
 <script type="text/javascript" src="/manhwa18cc/js/1.5.6-angular-sanitize.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/manhwa18cc/js/js-main.js" defer></script>
 <script type="text/javascript" src="/manhwa18cc/js/js-jquery.star-rating-svg.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 <script>
 // document.addEventListener('DOMContentLoaded', function() {
@@ -168,5 +173,13 @@ currentTab.focus();
          nav.classList.remove("sticky");
       }
    }
+   // sự kiện khi click trái phải 
+   $(document).keydown(function(e) {
+        if (e.which === 37) { 
+             $('.icofont-swoosh-left').trigger('click'); 
+        } else if (e.which === 39) {
+            $('.icofont-swoosh-right').trigger('click'); // Gọi sự kiện click
+        }
+    });
 </script>
 </html>

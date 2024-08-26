@@ -30,10 +30,10 @@ class Chapter extends Model
             Chapter::getDB()->join('unlocked_chapters', 'unlocked_chapters.chapter_id=chapters.id', 'LEFT');
             Chapter::getDB()->joinWhere('unlocked_chapters', 'unlocked_chapters.user_id', userget()->id);
 
-            return Chapter::getDB()->get('chapters', $limit, 'chapters.id, chapters.views, chapters.price, chapters.name, chapters.hidden, chapters.last_update, chapters.slug, chapters.name_extend, COUNT(user_log_reading.id) as has_read, COUNT(unlocked_chapters.chapter_id) as is_unlocked');
+            return Chapter::getDB()->get('chapters', $limit, 'chapters.id, chapters.views, chapters.price, chapters.is_lock, chapters.name, chapters.hidden, chapters.last_update, chapters.slug, chapters.name_extend, COUNT(user_log_reading.id) as has_read, COUNT(unlocked_chapters.chapter_id) as is_unlocked');
         }
 
-        return Chapter::getDB()->get('chapters', $limit, 'chapters.id, chapters.views, chapters.price, chapters.name, chapters.hidden, chapters.last_update, chapters.slug, chapters.name_extend');
+        return Chapter::getDB()->get('chapters', $limit, 'chapters.id, chapters.views, chapters.price, chapters.is_lock, chapters.name, chapters.hidden, chapters.last_update, chapters.slug, chapters.name_extend');
     }
 
     public static function ChapterByID($id)
@@ -57,6 +57,8 @@ class Chapter extends Model
 
         return Chapter::getDB()->objectBuilder()->getOne('chapters c');
     }
+
+
 
     public static function AddMultiChapters(array $chapters)
     {

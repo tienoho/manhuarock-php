@@ -94,13 +94,13 @@
                                                             </div>
                                                             <div class="w-100">{{ $user->email }}</div>
                                                         </td>
-                                                        <td class="text-center user-edit" width="80px"><span
+                                                        <td class="text-center user-edit" width="120px"><span
                                                                     class="badge bg-success">{{ ucfirst($user->role) }}</span>
                                                         </td>
-                                                        <td class="text-center" width="180px">
+                                                        <td class="text-center" width="220px">
                                                             <button type="button"
                                                                     class="btn btn-warning btn-sm add-coin">
-                                                                Thêm
+                                                                Thêm coin
                                                             </button>
 
                                                             <button type="button" class="btn btn-info btn-sm user-edit">

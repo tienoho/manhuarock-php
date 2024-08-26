@@ -99,6 +99,14 @@
                 </li>
 
                 <li class="nav-header">QUẢN LÝ THÀNH VIÊN</li>
+                 <li class="nav-item">
+                    <a href="{{ path_url("admin.deposit") }}" class="nav-link">
+                         <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Phiếu nạp coin
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ path_url("admin.user-manage") }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>

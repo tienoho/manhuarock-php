@@ -48,7 +48,7 @@
                             <a href="https://forms.gle/ikkSzdSoLZA2VeGZA">Yêu cầu truyện</a>
                         </li>
                         <li class="menu-item">
-                            <a  target="_blank" href="https://2ten.net">2TEN</a>
+                            <a  target="_blank" href="https://thanvuc.com/">ManhuarockV2</a>
                         </li>                    
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                     </li>
                 @endif
                 <li>
-                    <a href="{{ path_url("manga.history") }}" class="text-danger" title="{{ L::_("History") }}"><i class="icofont-history"></i> {{ L::_("History") }}</a>
+                    <a href="{{ path_url("manga.history") }}" title="{{ L::_("History") }}"><i class="icofont-history"></i> {{ L::_("History") }}</a>
                 </li>
                 <li>
                     <a href="{{ url("completed") }}" title="{{ L::_("Completed") }}"> {{ L::_("Completed") }}</a>
@@ -80,6 +80,13 @@
                 <li class="dropdownmenu">
                     <a href="#" title="{{ L::_("Genres") }}">{{ L::_("Genres") }} <i class="icofont-caret-right"></i></a>
                 </li>
+                <li>
+                    <a href="{{ url("user/add-coin") }}"  class="text-danger" title="{{ L::_("AddCoin") }}"> {{ L::_("AddCoin") }}</a>
+                </li>
+                <li>
+                    <p class="name">Coin : {{ userget()->coin == 0 ? 0 :number_format(userget()->coin, 0, '', '.')}}</p>
+                </li>
+				   
                 <div class="sub-menu" style="display: none;">
                     <ul>
                         @foreach(Models\Taxonomy::GetListGenres() as $genre)
@@ -124,7 +131,7 @@
                     <a href="{{ url("user.reading-list") }}" title="{{ L::_("Bookmark") }}">{{ L::_("Bookmark") }}</a>
                 </li>
                 <li>
-                    <a class="text-danger" href="{{ url("manga.history") }}" title="{{ L::_("History") }}">{{ L::_("History") }}</a>
+                    <a href="{{ url("manga.history") }}" title="{{ L::_("History") }}">{{ L::_("History") }}</a>
                 </li>
                 <li class="dropdownmenumb">
                     <a href="#" title="Manga List - Genres: All">{{ L::_("Genres") }} <i class="icofont-caret-right"></i></a>
@@ -144,13 +151,19 @@
                 <li class="menu-item">
                     <a href="https://forms.gle/ikkSzdSoLZA2VeGZA">Yêu cầu truyện</a>
                 </li> 
+                 <li>
+                    <a  class="text-danger" href="{{ url("user/add-coin") }}" title="{{ L::_("Most Viewed") }}"> {{ L::_("AddCoin") }}</a>
+                </li>
+                <li>
+                    <p class="name">Coin : {{ userget()->coin == 0 ? 0 :number_format(userget()->coin, 0, '', '.')}}</p>
+                </li>
             </ul>
             @include("themes.manga18fx.components.user-block")
         </div>
     </div>
     <div class="notifications-header">
         <div class="bixbox">
-            <a href="https://2ten.net"><i class="icofont-flash"></i> 2TEN</a>
+            <a href="https://thanvuc.com/"><i class="icofont-flash"></i> ManhuarockV2</a>
         </div>        
     </div>
 </div>

@@ -307,7 +307,13 @@ class User
     {
         return (new Blade())->render('themes.' . app_theme() . '.pages.profile', []);
     }
-
+    /**
+     * Trang user nạp coin
+     */
+    public function addCoin()
+    {
+        return (new Blade())->render('themes.' . app_theme() . '.pages.addCoin', []);
+    }
     /**
      * Api lưu lịch sử đọc truyện
      */
@@ -697,6 +703,7 @@ class User
     {
         if (!is_login()) {
             response()->json([
+                'status' => 'fail',
                 'msg' => 'Bạn cần đăng nhập để thực hiện chức năng này!',
             ]);
         }
@@ -709,6 +716,7 @@ class User
 
         if (!$chapter || !$user) {
             return response()->json([
+                'status' => 'fail',
                 'msg' => 'Không tìm thấy dữ liệu!',
             ]);
         }

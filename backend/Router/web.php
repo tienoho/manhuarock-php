@@ -48,7 +48,7 @@ Router::group(['middleware' => Middleware\Auth::class], function () {
         ['prefix' => '/cpanel'],
         function () {
             Router::get('/', 'Admin@show', ['as' => 'admin']);
-
+            
             Router::group(
                 ['middleware' => Middleware\PermissionManga::class],
                 function () {
@@ -64,7 +64,7 @@ Router::group(['middleware' => Middleware\Auth::class], function () {
             Router::group(
                 ['middleware' => Middleware\PermissionAdministration::class],
                 function () {
-                        Router::get('/user-manage/{page?}', 'Admin@userManage', ['as' => 'admin.user-manage'])->where(['page' => '([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)']);
+                       Router::get('/user-manage/{page?}', 'Admin@userManage', ['as' => 'admin.user-manage'])->where(['page' => '([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)']);
                         Router::get('/group-manage/{page?}', 'Admin@groupManage', ['as' => 'admin.group-manage'])->where(['page' => '([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)']);
                         Router::get('/request-manage/{page?}', 'Admin@requestManage', ['as' => 'admin.request-manage'])->where(['page' => '([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)']);
                         Router::get('/pin-manga/{page?}', 'Admin@pinManga', ['as' => 'admin.pin-manga'])->where(['page' => '([0-9]*[1-9][0-9]*(\.[0-9]+)?|[0]+\.[0-9]*[1-9][0-9]*)']);
@@ -78,6 +78,7 @@ Router::group(['middleware' => Middleware\Auth::class], function () {
                         Router::get('/taxonomy-manage/{type?}', 'Taxonomy@manage', ['as' => 'admin.taxonomy-manage']);
 
                         Router::get('/comment-manage', 'Comment@manage', ['as' => 'admin.comment-manage']);
+                        Router::get('/deposit', 'Deposit@deposit', ['as' => 'admin.deposit']);
 
                     }
             );
@@ -93,6 +94,8 @@ Router::group(['middleware' => Middleware\Auth::class], function () {
             Router::all('/request-permission', 'User@requestPermission', ['as' => 'user.request-permission']);
             Router::get('/payment', 'Payment@index');
             Router::post('/payment/charging', 'Payment@charging');
+            Router::get('/add-coin', 'User@addCoin', ['as' => 'user.addCoin']);
+            
         }
     );
 
@@ -102,6 +105,10 @@ Router::group(['middleware' => Middleware\Auth::class], function () {
             Router::post('/user/settings', 'User@userSettings');
             Router::post('/user/profile', 'User@userUpdateProfile');
             Router::post('/reading-list/add', 'User@readingListAdd');
+            Router::post('/user/depositCoins', 'Deposit@addDeposit');
+            
+            Router::post('/depositApprove', 'Deposit@updateDepositApprove');
+            Router::post('/depositReject', 'Deposit@updateDepositReject');
         }
     );
 

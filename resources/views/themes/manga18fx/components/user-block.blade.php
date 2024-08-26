@@ -20,8 +20,9 @@
                      style="margin-top: -5px;">
                     </div>
 
-                    <div class="displayname tleft">
-                        <span class="name tleft">Hi, {{ userget()->name }}</span>
+                   <div class="displayname tleft">
+                        <span class="name">Hi, {{ userget()->name }}</span>
+                        <!-- <span class="name">Coin : {{ userget()->coin }}</span> -->
                     </div>
                 </a>
             </div>

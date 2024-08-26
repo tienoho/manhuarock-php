@@ -6,8 +6,6 @@ class GoogleLogin {
     public $select = ['user', 'email, password, id'];
     public function callback(){
         $GoogleLogin = new \Services\GoogleLogin();
-
-
         $user = $GoogleLogin->getUserInfo();
         $email = $user['email'];
         $name = $user['name'];

@@ -27,6 +27,20 @@
                     <div class="left">
                         <div class="user-settings wleft ng-scope" ng-controller="userSetting">
                             <div class="tab-item wleft">
+                                  <div class="settings-title">
+                                    <h3>
+                                        {{ L::_("Coin") }}
+                                    </h3>
+                                </div>
+                                   <div class="form-items wleft">
+                                    <label class="form-label">{{ L::_("Total Coins") }}</label>
+                                    <div class="form-input">
+                                        <!-- ngIf: !validate --><span class="show ng-scope"
+                                                                      ng-if="!validate">{{number_format( userget()->coin , 0, '', '.')}}</span>
+                                        <!-- end ngIf: !validate -->
+                                        <!-- ngIf: validate -->
+                                    </div>
+                                </div>
                                 <div class="settings-title">
                                     <h3>
                                         {{ L::_("Change Your Display Name") }}

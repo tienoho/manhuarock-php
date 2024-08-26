@@ -3,14 +3,14 @@
     <div class="footermenu wleft tcenter">
         <div class="page-url wleft tcenter">
             <ul>
-                <li>
-                    <a href="#">{{ L::_("Privacy Policy") }}</a>
+                 <li>
+                   <a href="//www.dmca.com/Protection/Status.aspx?ID=d74dc928-1102-4858-bf04-0a233b2833f2" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=d74dc928-1102-4858-bf04-0a233b2833f2"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
                 </li>
                 <li>
-                    <a href="#">{{ L::_("Terms of Service") }}</a>
+                    <a href="/privacy-policy">{{ L::_("Privacy Policy") }}</a>
                 </li>
                 <li>
-                    <a href="#">DMCA</a>
+                    <a href="/terms-of-service">{{ L::_("Terms of Service") }}</a>
                 </li>
                 <li>
                     <a href="#">{{ L::_("About US") }}</a>

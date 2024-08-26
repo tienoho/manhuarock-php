@@ -1,7 +1,8 @@
 <form id="modal-form" action="/api/add-coin/{{ $user->id }}" type="POST">
+    <input hidden id="depositId">
     <div class="form-group">
         <label for="username">Coin Hiện Tại</label>
-        <input type="number" disabled class="form-control" value="{{ $user->coin }}">
+        <input type="number" disabled class="form-control" value="{{$user->coin}}">
     </div>
 
     <div class="form-group">
